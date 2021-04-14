@@ -1,0 +1,38 @@
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+  <edmx:DataServices>
+    <Schema Namespace="Cepres.Patients.Patients" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="Patient">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="50" />
+        <Property Name="NationalId" Type="Edm.String" Nullable="false" MaxLength="14" />
+        <Property Name="BirthDate" Type="Edm.DateTimeOffset" />
+        <Property Name="Email" Type="Edm.String" MaxLength="254" />
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <NavigationProperty Name="Visits" Type="Collection(Cepres.Patients.Patients.Visit)" />
+      </EntityType>
+      <EntityType Name="Visit">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Description" Type="Edm.String" MaxLength="800" />
+        <Property Name="Disease" Type="Edm.String" Nullable="false" MaxLength="100" />
+        <Property Name="Fees" Type="Edm.Double" Nullable="false" />
+        <Property Name="CreationTime" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <NavigationProperty Name="Patient" Type="Cepres.Patients.Patients.Patient" />
+      </EntityType>
+    </Schema>
+    <Schema Namespace="Default" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityContainer Name="Container">
+        <EntitySet Name="Patient" EntityType="Cepres.Patients.Patients.Patient">
+          <NavigationPropertyBinding Path="Visits" Target="Visit" />
+        </EntitySet>
+        <EntitySet Name="Visit" EntityType="Cepres.Patients.Patients.Visit">
+          <NavigationPropertyBinding Path="Patient" Target="Patient" />
+        </EntitySet>
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
