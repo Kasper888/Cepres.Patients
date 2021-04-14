@@ -28,7 +28,7 @@ namespace Cepres.Patients.Patients
     public string NationalId { get; set; }
     [DataType(DataType.Date), DateInPast(120)]
     public DateTime? BirthDate { get; set; }
-    [EmailAddress, MaxLength(254)]
+    [EmailAddress, MaxLength(254), MinLength(6)]
     public string Email { get; set; }
     public virtual HashSet<Visit> Visits { get; set; }
   }
