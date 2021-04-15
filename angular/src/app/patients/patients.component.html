@@ -1,23 +1,33 @@
 ﻿<div [@routerTransition]>
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-6">
+          <h1><span class="fa-user-injured fas"></span> Patients</h1>
+        </div>
+      </div>
+    </div>
+  </section>
   <section class="content px-2">
 
     <div class="container-fluid">
       <div class="card">
-        <ejs-grid #grid [dataSource]='data' (actionFailure)="onActionFailure($event)"
+        <ejs-grid #patientGrid [dataSource]='patientData' [childGrid]='patientVisitsGrid' (actionFailure)="onActionFailure($event)"
           (toolbarClick)="toolbarClick($event)" (commandClick)="commandClick($event)" allowReordering=true
-          allowResizing=true allowMultiSorting=true
-          [allowExcelExport]=true [filterSettings]='{type: "Menu"}' [showColumnChooser]=true
-          [showColumnMenu]=true clipMode='EllipsisWithTooltip'
-          [editSettings]='{ allowEditing: true, allowAdding: true }'
-          [allowFiltering]=true [allowGrouping]=true [allowPaging]=true allowSorting=true
+          allowResizing=true allowMultiSorting=true [allowExcelExport]=true [filterSettings]='{type: "Menu"}'
+          [showColumnChooser]=true [showColumnMenu]=true clipMode='EllipsisWithTooltip'
+          [editSettings]='{ allowEditing: true, allowAdding: true, newRowPosition: "Top" }' 
+          [allowFiltering]=true [allowGrouping]=true [allowPaging]=true allowSorting=true  
+          [sortSettings]='{columns: [{ field: "Id", direction: "Descending" }]}' 
           [toolbar]="['Add', 'Edit', 'Cancel', 'Update', 'ColumnChooser','Search','Print','ExcelExport']">
           <e-columns>
-            <e-column field='Id' [isPrimaryKey]='true' defaultValue='0' [isIdentity]='false'></e-column>
+            <e-column field='Id' [isPrimaryKey]='true' defaultValue='0' [isIdentity]='true'></e-column>
             <e-column field='Name' [validationRules]='{ required: true, rangeLength: [2,50] }'></e-column>
-            <e-column field='Email' [validationRules]='{ required: true, rangeLength: [6,254] }'></e-column>
-            <e-column field='NationalId' headerText='National Id' [validationRules]='{ required: true, rangeLength: [14,14] }'></e-column>
+            <e-column field='Email' [validationRules]='{ required: true, email: true }'></e-column>
+            <e-column field='NationalId' headerText='National Id'
+              [validationRules]='{ required: true, rangeLength: [14,14], number: true }'></e-column>
             <e-column field='BirthDate' headerText='Date of Birth' format='y-M-d' editType='datepickeredit'></e-column>
-            <e-column headerText='Visits' [allowEditing]='false'>
+            <!-- <e-column headerText='Visits' [allowEditing]='false'>
               <ng-template #template let-data>
                 {{data.Visits.length}}
               </ng-template>
@@ -26,7 +36,7 @@
               <ng-template #template let-data>
                 {{data.Visits[data.Visits.length - 1].CreationTime | date:'y-M-d h:mm a'}}
               </ng-template>
-            </e-column>
+            </e-column> -->
             <e-column headerText='Report' [commands]='commands'></e-column>
           </e-columns>
         </ejs-grid>

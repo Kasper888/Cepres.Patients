@@ -13,7 +13,7 @@ using Cepres.Patients.Authentication.JwtBearer;
 using Cepres.Patients.Configuration;
 using Cepres.Patients.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
-using Abp.AspNetCore.OData;
+
 
 namespace Cepres.Patients
 {
@@ -21,7 +21,6 @@ namespace Cepres.Patients
        typeof(PatientsApplicationModule),
        typeof(PatientsEntityFrameworkModule),
        typeof(AbpAspNetCoreModule),
-       typeof(AbpAspNetCoreODataModule),
        typeof(AbpAspNetCoreSignalRModule)
    )]
   public class PatientsWebCoreModule : AbpModule

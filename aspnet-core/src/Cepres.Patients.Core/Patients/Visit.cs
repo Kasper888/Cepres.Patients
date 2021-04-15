@@ -12,7 +12,7 @@ namespace Cepres.Patients.Patients
 {
   public class Visit : Entity, IHasCreationTime
   {
-    public int PatientId { get; protected set; }
+    public int PatientId { get; set; }
     public Patient Patient { get; set; }
     [MaxLength(800)]
     public string Description { get; set; }

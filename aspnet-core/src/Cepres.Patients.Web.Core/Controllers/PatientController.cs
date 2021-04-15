@@ -1,4 +1,4 @@
-﻿using Abp.AspNetCore.OData.Controllers;
+﻿
 using Abp.AutoMapper;
 using Abp.Dependency;
 using Abp.Domain.Repositories;
@@ -6,9 +6,11 @@ using Abp.Domain.Uow;
 using Abp.Web.Models;
 using Cepres.Patients.Authorization;
 using Cepres.Patients.Patients;
-using Microsoft.AspNet.OData;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Deltas;
+using Microsoft.AspNetCore.OData.Formatter;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,8 +19,7 @@ using System.Threading.Tasks;
 
 namespace Cepres.Patients.Controllers
 {
-  [DontWrapResult]
-  public class PatientController : AbpODataEntityController<Patient>, IPerWebRequestDependency
+  public class PatientController : ODataEntityController<Patient>
   {
     private readonly IPatientManager _patientManager;
 
@@ -28,10 +29,9 @@ namespace Cepres.Patients.Controllers
       GetAllPermissionName = PermissionNames.Patient_List;
       UpdatePermissionName = PermissionNames.Patient_Update;
       CreatePermissionName = PermissionNames.Patient_Create;
-      DeletePermissionName = PermissionNames.Patient_Delete;
       _patientManager = patientManager;
     }
-    public async override Task<IActionResult> Patch([FromODataUri] int key, [FromBody] Delta<Patient> entity)
+    public async override Task<IActionResult> Patch(int key, Delta<Patient> entity)
     {
       if (entity.TryGetPropertyValue(nameof(Patient.NationalId), out object nationalId))
       {

@@ -23,12 +23,16 @@ namespace Cepres.Patients.Patients
       _patientRepository = patientRepository;
     }
     /// <summary>
-    /// Get List of other patients with similar diseases (Similar diseases mean that the two patients have in common 2 or more diseases)
+    ///  Get List of other patients with similar diseases (Similar diseases mean that the two patients have in common 2 or more diseases)
     /// </summary>
-    public virtual Dictionary<int, string> GetSimilarPatientsInDisease(int patientId, HashSet<string> diseases)
+    /// <param name="patientId">Patient Id</param>
+    /// <param name="diseases"></param>
+    /// <returns>Dictionary of Patient Id as key and Name as value</returns>
+    public virtual Dictionary<int, string> GetSimilarPatientsInDisease(Patient patient)
     {
+      var diseases = patient.Visits.Select(v => v.Disease).ToHashSet();
       return _patientRepository.GetAll()
-        .Where(p => p.Id != patientId && p.Visits.Select(v => v.Disease).Distinct().Count(d => diseases.Contains(d)) >= MinimumSimilarDisease)
+        .Where(p => p.Id != patient.Id && p.Visits.Select(v => v.Disease).Distinct().Count(d => diseases.Contains(d)) >= MinimumSimilarDisease)
         .Select(p => new { p.Id, p.Name })
         .ToDictionary(p => p.Id, p => p.Name);
     }
@@ -43,7 +47,7 @@ namespace Cepres.Patients.Patients
     public PatientStatistics GetPatientStatistics(int patientId)
     {
       var patient = _patientRepository.GetAllIncluding(p => p.Visits).First(p => p.Id == patientId);
-      var similarPatients = GetSimilarPatientsInDisease(patientId, patient.Visits.Select(v => v.Disease).ToHashSet());
+      var similarPatients = GetSimilarPatientsInDisease(patient);
       return PatientStatistics.Create(patient.Name, patient.BirthDate, patient.Visits, similarPatients);
     }
   }

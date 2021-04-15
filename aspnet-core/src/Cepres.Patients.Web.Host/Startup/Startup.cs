@@ -21,13 +21,12 @@ using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Serialization;
 using Microsoft.OData.Edm;
 using Cepres.Patients.Patients;
-using Microsoft.AspNet.OData.Extensions;
-using Microsoft.AspNet.OData.Builder;
 using Microsoft.Net.Http.Headers;
-using Microsoft.AspNet.OData.Formatter;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Mvc;
 using Abp.AspNetCore.Mvc.Results;
+using Microsoft.AspNetCore.OData;
+using Microsoft.OData.ModelBuilder;
 
 namespace Cepres.Patients.Web.Host.Startup
 {
@@ -48,18 +47,9 @@ namespace Cepres.Patients.Web.Host.Startup
 
     public IServiceProvider ConfigureServices(IServiceCollection services)
     {
-      services.AddOData();
-   
+
       services.AddControllersWithViews(o =>
       {
-        foreach (var outputFormatter in o.OutputFormatters.OfType<ODataOutputFormatter>().Where(_ => _.SupportedMediaTypes.Count == 0))
-        {
-          outputFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/prs.odatatestxx-odata"));
-        }
-        foreach (var inputFormatter in o.InputFormatters.OfType<ODataInputFormatter>().Where(_ => _.SupportedMediaTypes.Count == 0))
-        {
-          inputFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/prs.odatatestxx-odata"));
-        }
         o.Filters.Add(new AbpAutoValidateAntiforgeryTokenAttribute());
       }).AddNewtonsoftJson(options =>
       {
@@ -69,6 +59,7 @@ namespace Cepres.Patients.Web.Host.Startup
           NamingStrategy = new CamelCaseNamingStrategy()
         };
       });
+      services.AddOData(o => o.AddModel("odata", GetEdmModel()).Select().Filter().Expand().OrderBy().Count().SetMaxTop(null));
       IdentityRegistrar.Register(services);
       AuthConfigurer.Configure(services, _appConfiguration);
 
@@ -98,20 +89,7 @@ namespace Cepres.Patients.Web.Host.Startup
         options.SwaggerDoc(_apiVersion, new OpenApiInfo
         {
           Version = _apiVersion,
-          Title = "Patients API",
-          Description = "Patients",
-          // uncomment if needed TermsOfService = new Uri("https://example.com/terms"),
-          Contact = new OpenApiContact
-          {
-            Name = "Patients",
-            Email = string.Empty,
-            Url = new Uri("https://twitter.com/aspboilerplate"),
-          },
-          License = new OpenApiLicense
-          {
-            Name = "MIT License",
-            Url = new Uri("https://github.com/aspnetboilerplate/aspnetboilerplate/blob/dev/LICENSE"),
-          }
+          Title = "Patients API"
         });
         options.DocInclusionPredicate((docName, description) => true);
 
@@ -161,7 +139,6 @@ namespace Cepres.Patients.Web.Host.Startup
         endpoints.MapHub<AbpCommonHub>("/signalr");
         endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
         endpoints.MapControllerRoute("defaultWithArea", "{area}/{controller=Home}/{action=Index}/{id?}");
-        endpoints.MapODataRoute("odataPrefix", "odata", GetEdmModel()).Count().Filter().Expand().OrderBy().Select().MaxTop(null).SkipToken();
       });
 
       // Enable middleware to serve generated Swagger as a JSON endpoint

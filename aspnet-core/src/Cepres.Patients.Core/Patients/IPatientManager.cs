@@ -7,6 +7,6 @@ namespace Cepres.Patients.Patients
   {
     PatientStatistics GetPatientStatistics(int patientId);
     void AssertUniqueNationalId(int patientId, string nationalId);
-    Dictionary<int, string> GetSimilarPatientsInDisease(int patientId, HashSet<string> diseases);
+    Dictionary<int, string> GetSimilarPatientsInDisease(Patient patient);
   }
 }

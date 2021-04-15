@@ -22,8 +22,8 @@
     <ProjectReference Include="..\Cepres.Patients.EntityFrameworkCore\Cepres.Patients.EntityFrameworkCore.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Abp.AspNetCore.OData" Version="6.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.OData" Version="8.0.0-rc" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.2" />
     <PackageReference Include="Abp.AspNetCore" Version="6.3.0" />
     <PackageReference Include="Abp.ZeroCore" Version="6.3.0" />

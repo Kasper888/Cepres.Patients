@@ -1,4 +1,4 @@
-﻿using Abp.AspNetCore.OData.Controllers;
+﻿
 using Abp.Dependency;
 using Abp.Domain.Repositories;
 using Abp.Web.Models;
@@ -12,12 +12,11 @@ using System.Threading.Tasks;
 
 namespace Cepres.Patients.Controllers
 {
-  [DontWrapResult]
-  public class VisitController : AbpODataEntityController<Visit>, IPerWebRequestDependency
+  public class VisitController : ODataEntityController<Visit>
   {
     public VisitController(IRepository<Visit> repo) : base(repo)
     {
-
+      
     }
   }
 }
