@@ -9,9 +9,9 @@ User Interface is based on [AdminLTE theme](https://github.com/ColorlibHQ/AdminL
 # Technical Tasks
 #|Task|Time
 --|--|--
-1|Create & setup Solutions back & fron end|2 h
+1|Create & setup Solutions back & fron end|1 h
 2|Create entites & code first migration|1 h
-3|Create seed stratgy to cover all test cases|2 h
+3|Create seed stratgy to cover all test cases|1 h
 4|Implement Client & Server-Side validations|1 h
 5|Implement "Domain Service"|1 h
 6|Implement Statistics Reporting "Application Service"|1 h 
