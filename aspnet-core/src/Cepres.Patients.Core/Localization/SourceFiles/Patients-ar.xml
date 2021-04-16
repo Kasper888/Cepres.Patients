@@ -14,11 +14,11 @@
     <text name="UserLockedOutMessage">The user account has been locked out. Please try again later.</text>
     <text name="PleaseEnterLoginInformation" value="Please enter login information" />
     <text name="TenancyName" value="Tenancy name" />
-    <text name="UserNameOrEmail" value="User name or email" />
-    <text name="Password" value="Password" />
+    <text name="UserNameOrEmail" value="إسم المستخدم أو البريد الألكتروني" />
+    <text name="Password" value="كلمة المرور" />
     <text name="ResetPassword" value="Reset Password" />
-    <text name="UpdatePassword" value="Update Password" />
-    <text name="RememberMe" value="Remember me" />
+    <text name="UpdatePassword" value="تعديل كلمة المرور" />
+    <text name="RememberMe" value="تذكرني" />
     <text name="LogIn" value="دخول" />
     <text name="LoginFailed" value="Login failed!" />
     <text name="NameSurname" value="Name surname" />
@@ -36,12 +36,12 @@
     <text name="TenantName_Regex_Description" value="Tenant name must be at least 2 chars, starts with a letter and continue with letter, number, dash or underscore." />
     <text name="DefaultPasswordIs" value="Default password is {0}" />
     <text name="CanBeEmptyToLoginAsHost" value="Can be empty to login as host." />
-    <text name="Register" value="Register" />
+    <text name="Register" value="تسجيل" />
     <text name="OrLoginWith" value="Or login with" />
     <text name="WaitingForActivationMessage" value="Your account is waiting to be activated by system admin." />
     <text name="TenantSelection" value="Tenant Selection" />
     <text name="TenantSelection_Detail" value="Please select one of the following tenants." />
-    <text name="Logout" value="Logout" />
+    <text name="Logout" value="خروج" />
     <text name="RegisterFormUserNameInvalidMessage">Please don't enter an email address for username.</text>
     <text name="DatabaseConnectionString" value="Database connection string" />
     <text name="Users" value="المستخدمين" />
@@ -87,7 +87,7 @@
     <text name="UserDetails">User details</text>
     <text name="UserRoles">ادوار المستخدم</text>
     <text name="ConfirmPassword">Confirm password</text>
-    <text name="Version">Version</text>
+    <text name="Version">أصدار</text>
     <text name="On">تشغيل</text>
     <text name="Off">ايقاف</text>
     <text name="AreYouSureWantToDelete">Are you sure want to delete {0}?</text>
