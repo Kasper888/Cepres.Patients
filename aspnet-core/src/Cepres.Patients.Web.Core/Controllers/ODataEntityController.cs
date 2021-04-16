@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 
 namespace Cepres.Patients.Controllers
 {
-  [ODataRouting, DontWrapResult, ApiExplorerSettings(IgnoreApi = true)]
+  [ODataRouting, DontWrapResult]
   public class ODataEntityController<TEntity> : PatientsControllerBase
           where TEntity : class, IEntity<int>
   {
