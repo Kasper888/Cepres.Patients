@@ -3,10 +3,10 @@
 This is a technical task created for Cepres using **ASP.NET Core with Angular 11** startup template [ASP.NET Boilerplate](https://aspnetboilerplate.com/Pages/Documents).
 User Interface is based on [AdminLTE theme](https://github.com/ColorlibHQ/AdminLTE).
 # Run the Solution
-#### Back-end
+#### 1. Back-end
 1. update-database from package manager console by select Default Project: Cepres.Patients.EntityFrameworkCore and set Startup Project: Cepres.Patients.Web.Host
 2. Build & Run, the seeding builder/stratgy will add 500 random patients with their visits
-#### Front-end
+#### 2. Front-end
 1. Yarn or npm Install in angular folder
 2. npm start
 # Design
