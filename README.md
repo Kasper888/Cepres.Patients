@@ -1,6 +1,6 @@
 ![](https://www.cepres.com/wp-content/uploads/2020/02/logo-cepres-2020.svg)
 # Introduction
-This is a technical assessment created for Cepres using **ASP.NET Core with Angular 11** startup template [ASP.NET Boilerplate](https://aspnetboilerplate.com/Pages/Documents).
+This is a technical task created for Cepres using **ASP.NET Core with Angular 11** startup template [ASP.NET Boilerplate](https://aspnetboilerplate.com/Pages/Documents).
 User Interface is based on [AdminLTE theme](https://github.com/ColorlibHQ/AdminLTE).
 
 # Design
