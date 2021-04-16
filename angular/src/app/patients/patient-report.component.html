@@ -1,0 +1,49 @@
+<abp-modal-header title='Patient Statistics' (onCloseClick)="bsModalRef.hide()"></abp-modal-header>
+
+<div class="modal-body">
+    <table class="table table-striped table-responsive table-hover">
+        <tbody> 
+            <tr>
+                <th scope="row" style="width: 33%"><span class="fas fa-address-card"></span> Patient Id</th>
+                <td>{{id}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Name</th>
+                <td>{{patientReport.name}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Age</th>
+                <td>{{patientReport.age}} Years</td>
+            </tr> 
+            <tr>
+                <th scope="row">Visits</th>
+                <td>{{patientReport.visitTotalCount}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Bills Average</th>
+                <td>{{patientReport.billsAverage | currency}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Bills Average Without Outliers</th>
+                <td>{{patientReport.billsAverageWithoutOutliers | currency}}</td>
+            </tr>
+            <tr>
+                <th scope="row">5th Visit</th>
+                <td>{{patientReport.fifthVisit | date: 'y-M-d h:mm a' }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Top VisitM onth</th>
+                <td>{{patientReport.topVisitMonth}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Similar Patients</th>
+                <td>
+                    <span *ngFor="let p of patientReport.similarPatientsInDisease | keyvalue">
+                        <a href="javascript:;" [title]='"Id: " + p.key' class="badge badge-dark">{{p.value}} </a>
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

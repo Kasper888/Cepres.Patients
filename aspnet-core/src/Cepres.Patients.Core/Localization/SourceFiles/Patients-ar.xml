@@ -44,7 +44,7 @@
     <text name="Logout" value="Logout" />
     <text name="RegisterFormUserNameInvalidMessage">Please don't enter an email address for username.</text>
     <text name="DatabaseConnectionString" value="Database connection string" />
-    <text name="Users" value="Users" />
+    <text name="Users" value="المستخدمين" />
     <text name="IsActive" value="Is active" />
     <text name="FullName" value="Full name" />
     <text name="CreateNewUser" value="Create new user" />
@@ -60,7 +60,7 @@
     <text name="Back">للخلف</text>
     <text name="SuccessfullyRegistered">Successfully registered</text>
     <text name="WaitingForEmailActivation">Your email address should be activated</text>
-    <text name="Roles">Roles</text>
+    <text name="Roles">الأدوار</text>
     <text name="DisplayName">Display Name</text>
     <text name="Edit">تعديل</text>
     <text name="Delete">حذف</text>

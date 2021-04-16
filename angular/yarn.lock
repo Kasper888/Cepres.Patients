@@ -1497,6 +1497,17 @@
     "@types/lodash" "4.14.159"
     "@types/node" "11.15.20"
 
+"@syncfusion/ej2-angular-popups@*":
+  version "19.1.56"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-angular-popups/-/ej2-angular-popups-19.1.56.tgz#5dc0325b86651112afcfc278ab8b7aa9ba6a1c4a"
+  integrity sha512-VCPUIPx6THuXMQxU8AmA/uZ0Tk/OKwxBgo6U1ibbXgyQAsUHZWaGID8aTeu5QukpRQ0cEm5YTvit3YAcCiDbPQ==
+  dependencies:
+    "@syncfusion/ej2-angular-base" "~19.1.56"
+    "@syncfusion/ej2-base" "~19.1.56"
+    "@syncfusion/ej2-popups" "19.1.56"
+    "@types/lodash" "4.14.159"
+    "@types/node" "11.15.20"
+
 "@syncfusion/ej2-barcode-generator@~19.1.56":
   version "19.1.56"
   resolved "https://registry.yarnpkg.com/@syncfusion/ej2-barcode-generator/-/ej2-barcode-generator-19.1.56.tgz#767ee069f3524a03a24f80d61129cf8da539cac2"
@@ -1867,7 +1878,7 @@
     "@syncfusion/ej2-splitbuttons" "~19.1.54"
     "@syncfusion/ej2-svg-base" "~19.1.54"
 
-"@syncfusion/ej2-popups@~19.1.54", "@syncfusion/ej2-popups@~19.1.56":
+"@syncfusion/ej2-popups@19.1.56", "@syncfusion/ej2-popups@~19.1.54", "@syncfusion/ej2-popups@~19.1.56":
   version "19.1.56"
   resolved "https://registry.yarnpkg.com/@syncfusion/ej2-popups/-/ej2-popups-19.1.56.tgz#e558daac516a74350cda2b8c5fdac95f760af79d"
   integrity sha512-Fz+mQkAaNX351fOIK1mtGx8msqVFs1uu7X9ESBkxkjqOMlW6ExJXKgWeWppxBT0LtobTUE8M8BjTEsqvYc3+Zw==

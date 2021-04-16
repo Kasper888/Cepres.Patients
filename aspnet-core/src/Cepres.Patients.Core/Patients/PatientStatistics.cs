@@ -20,17 +20,21 @@ namespace Cepres.Patients.Patients
     {
 
     }
-    public static PatientStatistics Create(string name, DateTime? birthDate, HashSet<Visit> visits, Dictionary<int, string> similarPatientsInDisease)
+    public static PatientStatistics Create(string name, DateTime? birthDate, HashSet<Visit> visits, Dictionary<int, string> similarPatientsInDisease = null)
     {
       var patientStatics = new PatientStatistics();
       patientStatics.Name = name;
-      patientStatics.SimilarPatientsInDisease = similarPatientsInDisease;
       patientStatics.CalculateAge(birthDate);
-      patientStatics.SetFifthVisit(visits);
-      patientStatics.VisitTotalCount = visits.Count();
-      patientStatics.BillsAverage = visits.Average(v => v.Fees);
-      patientStatics.SetBillsAverageWithoutOutliers(visits);
-      patientStatics.SetTopVisitMonth(visits);
+      if (visits.Any())
+      {
+        patientStatics.SimilarPatientsInDisease = similarPatientsInDisease;
+        patientStatics.SetFifthVisit(visits);
+        patientStatics.VisitTotalCount = visits.Count();
+        patientStatics.BillsAverage = visits.Average(v => v.Fees);
+        patientStatics.SetBillsAverageWithoutOutliers(visits);
+        patientStatics.SetTopVisitMonth(visits);
+      }
+
       return patientStatics;
     }
     public virtual string Name { get; protected set; }

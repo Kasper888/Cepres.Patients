@@ -12,8 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceProxyModule } from '@shared/service-proxies/service-proxy.module';
 import { SharedModule } from '@shared/shared.module';
-import { HomeComponent } from '@app/home/home.component';
 import { PatientsComponent } from '@app/patients/patients.component';
+import { PatientReportComponent } from '@app/patients/patient-report.component';
 // tenants
 import { TenantsComponent } from '@app/tenants/tenants.component';
 import { CreateTenantDialogComponent } from './tenants/create-tenant/create-tenant-dialog.component';
@@ -65,11 +65,12 @@ import {
   , InfiniteScrollService
   , GridModule 
 } from '@syncfusion/ej2-angular-grids';
+import { DialogModule } from '@syncfusion/ej2-angular-popups';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     PatientsComponent,
+    PatientReportComponent,
     // tenants
     TenantsComponent,
     CreateTenantDialogComponent,
@@ -109,7 +110,8 @@ import {
     ServiceProxyModule,
     SharedModule,
     NgxPaginationModule,
-    GridModule
+    GridModule,
+    DialogModule
   ],
   providers: [
     PageService
@@ -136,6 +138,7 @@ import {
     , ExcelExportService
     , PdfExportService],
   entryComponents: [
+    PatientReportComponent,
     // tenants
     CreateTenantDialogComponent,
     EditTenantDialogComponent,
@@ -145,7 +148,7 @@ import {
     // users
     CreateUserDialogComponent,
     EditUserDialogComponent,
-    ResetPasswordDialogComponent,
+    ResetPasswordDialogComponent
   ],
 })
 export class AppModule {}

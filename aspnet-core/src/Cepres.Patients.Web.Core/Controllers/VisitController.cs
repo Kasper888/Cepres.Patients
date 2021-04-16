@@ -16,7 +16,10 @@ namespace Cepres.Patients.Controllers
   {
     public VisitController(IRepository<Visit> repo) : base(repo)
     {
-      
+      GetPermissionName = PermissionNames.Patient_Get;
+      GetAllPermissionName = PermissionNames.Patient_List;
+      UpdatePermissionName = PermissionNames.Patient_Update;
+      CreatePermissionName = PermissionNames.Patient_Create;
     }
   }
 }
