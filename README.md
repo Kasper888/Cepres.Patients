@@ -26,7 +26,7 @@ User Interface is based on [AdminLTE theme](https://github.com/ColorlibHQ/AdminL
 15|Test|2 h
 16|Create & push to GitHub repo|1 h
 17|Document|1 h
-#|**TOTAL**|**22 h**
+#|**TOTAL**|**20 h**
 
 # Screenshots
 
