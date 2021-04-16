@@ -1,6 +1,6 @@
 ![](https://www.cepres.com/wp-content/uploads/2020/02/logo-cepres-2020.svg)
 # Introduction
-This is a technical assessment created for Cepres using **ASP.NET Core with Angular 11** startup template [ASP.NET Boilerplate](https://aspnetboilerplate.com/Pages/Documents).
+This is a technical task created for Cepres using **ASP.NET Core with Angular 11** startup template [ASP.NET Boilerplate](https://aspnetboilerplate.com/Pages/Documents).
 User Interface is based on [AdminLTE theme](https://github.com/ColorlibHQ/AdminLTE).
 
 # Design
@@ -9,9 +9,9 @@ User Interface is based on [AdminLTE theme](https://github.com/ColorlibHQ/AdminL
 # Technical Tasks
 #|Task|Time
 --|--|--
-1|Create & setup Solutions back & fron end|2 h
+1|Create & setup Solutions back & fron end|1 h
 2|Create entites & code first migration|1 h
-3|Create seed stratgy to cover all test cases|2 h
+3|Create seed stratgy to cover all test cases|1 h
 4|Implement Client & Server-Side validations|1 h
 5|Implement "Domain Service"|1 h
 6|Implement Statistics Reporting "Application Service"|1 h 
@@ -26,7 +26,7 @@ User Interface is based on [AdminLTE theme](https://github.com/ColorlibHQ/AdminL
 15|Test|2 h
 16|Create & push to GitHub repo|1 h
 17|Document|1 h
-#|**TOTAL**|**22 h**
+#|**TOTAL**|**20 h**
 
 # Screenshots
 
