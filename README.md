@@ -9,6 +9,7 @@ User Interface is based on [AdminLTE theme](https://github.com/ColorlibHQ/AdminL
 #### 2. Front-end
 1. Yarn or npm Install in angular folder
 2. npm start
+3. [Login](http://localhost:4200/) as admin : 123qwe
 # Design
  It is based on Domain-Driven-Design, .NET 5, EF Core, **OData V4** Protocol the standard & best way to create a fully CRUD RESTful API with all of query options supported ex: sorting, filtering, paging, grouping, multiple query options and advanced search server-side.
 
@@ -63,6 +64,15 @@ Angular|PatientsComponent|Add
 Angular|Syncfusion Grid, NPM Package|Add
 Angular|Routing, Menu items|Edit
 # Screenshots
+
+#### Login Page Arabic
+![](_screenshots/LogIn-EN.png)
+
+#### Login Page English
+![](_screenshots/LogIn-AR.png)
+
+#### Roles and Premissions Page
+![](_screenshots/1.png)
 
 #### Roles and Premissions Page
 ![](_screenshots/1.png)
