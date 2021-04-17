@@ -4,7 +4,7 @@
     <table class="table table-striped table-responsive table-hover">
         <tbody> 
             <tr>
-                <th scope="row" style="width: 33%"><span class="fas fa-address-card"></span> Patient Id</th>
+                <th scope="row" style="width: 40%"><span class="fas fa-address-card"></span> Patient Id</th>
                 <td>{{id}}</td>
             </tr>
             <tr>
@@ -17,7 +17,7 @@
             </tr> 
             <tr>
                 <th scope="row">Visits</th>
-                <td>{{patientReport.visitTotalCount}}</td>
+                <td>{{patientReport.visitsCount}}</td>
             </tr>
             <tr>
                 <th scope="row">Bills Average</th>
@@ -32,14 +32,14 @@
                 <td>{{patientReport.fifthVisit | date: 'y-M-d h:mm a' }}</td>
             </tr>
             <tr>
-                <th scope="row">Top VisitM onth</th>
+                <th scope="row">Top Visit Month</th>
                 <td>{{patientReport.topVisitMonth}}</td>
             </tr>
             <tr>
-                <th scope="row">Similar Patients</th>
-                <td>
+                <td colspan="2">
+                    <label><span class="fas fa-address-card"></span> Similar Patients</label>
                     <span *ngFor="let p of patientReport.similarPatientsInDisease | keyvalue">
-                        <a href="javascript:;" [title]='"Id: " + p.key' class="badge badge-dark">{{p.value}} </a>
+                        <button (click)="bindPatientReport(p.key)" class="btn btn-dark btn-sm m-1">{{p.value}}</button>
                     </span>
                 </td>
             </tr>

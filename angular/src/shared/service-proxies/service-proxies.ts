@@ -3921,7 +3921,7 @@ export class PatientStatistics implements IPatientStatistics {
     readonly age: number | undefined;
     readonly billsAverage: number;
     readonly billsAverageWithoutOutliers: number;
-    readonly visitTotalCount: number;
+    readonly visitsCount: number;
     readonly topVisitMonth: string | undefined;
     readonly similarPatientsInDisease: { [key: string]: string; } | undefined;
 
@@ -3941,7 +3941,7 @@ export class PatientStatistics implements IPatientStatistics {
             (<any>this).age = _data["age"];
             (<any>this).billsAverage = _data["billsAverage"];
             (<any>this).billsAverageWithoutOutliers = _data["billsAverageWithoutOutliers"];
-            (<any>this).visitTotalCount = _data["visitTotalCount"];
+            (<any>this).visitsCount = _data["visitsCount"];
             (<any>this).topVisitMonth = _data["topVisitMonth"];
             if (_data["similarPatientsInDisease"]) {
                 (<any>this).similarPatientsInDisease = {} as any;
@@ -3967,7 +3967,7 @@ export class PatientStatistics implements IPatientStatistics {
         data["age"] = this.age;
         data["billsAverage"] = this.billsAverage;
         data["billsAverageWithoutOutliers"] = this.billsAverageWithoutOutliers;
-        data["visitTotalCount"] = this.visitTotalCount;
+        data["visitsCount"] = this.visitsCount;
         data["topVisitMonth"] = this.topVisitMonth;
         if (this.similarPatientsInDisease) {
             data["similarPatientsInDisease"] = {};
@@ -3993,7 +3993,7 @@ export interface IPatientStatistics {
     age: number | undefined;
     billsAverage: number;
     billsAverageWithoutOutliers: number;
-    visitTotalCount: number;
+    visitsCount: number;
     topVisitMonth: string | undefined;
     similarPatientsInDisease: { [key: string]: string; } | undefined;
 }

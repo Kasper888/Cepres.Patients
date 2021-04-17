@@ -49,7 +49,7 @@ namespace Cepres.Patients.Patients
     public PatientStatistics GetPatientStatistics(int patientId)
     {
       var patient = _patientRepository.GetAllIncluding(p => p.Visits).First(p => p.Id == patientId);
-      return PatientStatistics.Create(patient.Name, patient.BirthDate, patient.Visits, GetSimilarPatientsOrNull(patient));
+      return PatientStatistics.Create(patient, GetSimilarPatientsOrNull(patient));
     }
   }
 }

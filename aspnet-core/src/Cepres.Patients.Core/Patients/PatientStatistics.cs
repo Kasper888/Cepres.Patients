@@ -13,69 +13,37 @@ namespace Cepres.Patients.Patients
 {
   public class PatientStatistics
   {
-    private const int HumanMaxAge = 120;
     private const double OutliersPercent = .2;
-
+    //Composition over inheritance principle
+    protected Patient patient;
     protected PatientStatistics()
     {
-
     }
-    public static PatientStatistics Create(string name, DateTime? birthDate, HashSet<Visit> visits, Dictionary<int, string> similarPatientsInDisease = null)
+    public static PatientStatistics Create(Patient patient, Dictionary<int, string> similarPatientsInDisease = null)
     {
       var patientStatics = new PatientStatistics();
-      patientStatics.Name = name;
-      patientStatics.CalculateAge(birthDate);
-      if (visits.Any())
+      patientStatics.patient = patient;
+      if (patient.Visits.Any())
       {
+        patientStatics.SetTopVisitMonth();
         patientStatics.SimilarPatientsInDisease = similarPatientsInDisease;
-        patientStatics.SetFifthVisit(visits);
-        patientStatics.VisitTotalCount = visits.Count();
-        patientStatics.BillsAverage = visits.Average(v => v.Fees);
-        patientStatics.SetBillsAverageWithoutOutliers(visits);
-        patientStatics.SetTopVisitMonth(visits);
       }
 
       return patientStatics;
     }
-    public virtual string Name { get; protected set; }
-    public virtual DateTime? FifthVisit { get; protected set; }
-    public virtual int? Age { get; protected set; }
-    public virtual double BillsAverage { get; protected set; }
-    public virtual double BillsAverageWithoutOutliers { get; protected set; }
-    public virtual int VisitTotalCount { get; protected set; }
+    public virtual string Name => patient.Name;
+    public virtual DateTime? FifthVisit => patient.Visits.Skip(4).FirstOrDefault()?.CreationTime;
+    public virtual int? Age => Clock.Now.Year - patient.BirthDate?.Year;
+    public virtual double BillsAverage => patient.Visits.Average(v => v.Fees);
+    public virtual double BillsAverageWithoutOutliers => patient.Visits.Select(v => v.Fees).ToArray().TruncatedMean(OutliersPercent);
+    public virtual int VisitsCount => patient.Visits.Count;
     public virtual string TopVisitMonth { get; protected set; }
     public virtual Dictionary<int, string> SimilarPatientsInDisease { get; protected set; }
 
-    protected virtual void CalculateAge(DateTime? birthDate)
+    protected virtual void SetTopVisitMonth()
     {
-      if (birthDate == null)
-      {
-        Age = null;
-        return;
-      }
-      Age = Clock.Now.Year - birthDate.Value.Year;
-      AssertValidAge();
-    }
-
-    protected virtual void SetFifthVisit(IEnumerable<Visit> visits)
-    {
-      FifthVisit = visits.Skip(4).FirstOrDefault()?.CreationTime;
-    }
-    protected virtual void SetBillsAverageWithoutOutliers(IEnumerable<Visit> visits)
-    {
-      BillsAverageWithoutOutliers = visits.Select(v => v.Fees).ToArray().TruncatedMean(OutliersPercent);
-    }
-    protected virtual void SetTopVisitMonth(IEnumerable<Visit> visits)
-    {
-      var topVisitMonthNumber = visits.GroupBy(v => v.CreationTime.Month).OrderBy(g => g.Count()).Last().Key;
+      var topVisitMonthNumber = patient.Visits.GroupBy(v => v.CreationTime.Month).OrderBy(g => g.Count()).Last().Key;
       TopVisitMonth = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(topVisitMonthNumber);
-    }
-    private void AssertValidAge()
-    {
-      if (Age < 1 || Age > HumanMaxAge)
-      {
-        throw new UserFriendlyException("Invalid birth date");
-      }
     }
   }
 }

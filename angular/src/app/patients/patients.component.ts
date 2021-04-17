@@ -70,7 +70,7 @@ export class PatientsComponent extends AppComponentBase {
   commandClick(args: any): void {
     this._modalService.show(PatientReportComponent,
       {
-        class: 'modal-md',
+        class: 'modal-lg',
         initialState: {
           id: args.rowData.Id,
         },
